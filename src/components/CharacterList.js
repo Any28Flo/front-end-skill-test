@@ -22,7 +22,7 @@ const CharacterList = () =>{
         <CharactersGrid>
             {
                 characters.map((character, id) =>(
-                    <CharacterCard key={id } character={character}  />
+                    <CharacterCard key={id} character={character}  />
                 ))
             }
         </CharactersGrid>
