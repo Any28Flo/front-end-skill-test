@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Row, Col, Container} from 'reactstrap';
+import Overdrive from 'react-overdrive'
 
 import CharactersServices from "../services/charactersServices";
 import NavBar from "./NavBar/NavBar";
@@ -34,9 +35,13 @@ const CharacterDetails = (props) =>{
                     <p>{`Género: ${gender}`}</p>
                 </Col>
                 <Col  md="6" lg="4">
-                    <img
-                        src={image}
-                        alt={`character-${id}`}/>
+                    <Overdrive id={id}>
+                        <img
+                            src={image}
+                            alt={`character-${id}`}/>
+
+                    </Overdrive>
+
                 </Col>
             </Row>
 
