@@ -52,7 +52,7 @@ CharacterCard.propTypes={
         type : PropTypes.string,
         image : PropTypes.string,
         gender : PropTypes.string,
-        id: PropTypes.string.isRequired
+        id: PropTypes.number.isRequired
     }).isRequired,
 }
 
