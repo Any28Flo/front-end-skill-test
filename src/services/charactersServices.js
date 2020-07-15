@@ -12,6 +12,11 @@ class CharactersServices{
             .then(res => res)
             .catch(e => console.log(e))
     }
+    getDetailCharacter = (numCharacter) =>{
+        return this.service.get(`/character/${numCharacter}`)
+            .then(res => res)
+            .catch(e => console.log(e))
+    }
 
 }
 export default CharactersServices

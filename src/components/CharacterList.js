@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Row} from 'reactstrap'
+import {Row, Col} from 'reactstrap'
 
 import styled from 'styled-components'
 import CharacterService from "./../services/charactersServices"
@@ -27,7 +27,6 @@ const CharacterList = () =>{
         getCharacters()
 
     }, [])
-    //Get current movies
     const indexOfLastMovie = currentPage * charactersPerPage;
     const  indexOfFirstMovie = indexOfLastMovie - charactersPerPage;
     const currentCharacter = characters.slice(indexOfFirstMovie,  indexOfLastMovie);
@@ -35,18 +34,26 @@ const CharacterList = () =>{
     if( characters < 1 ) return <Spinner/>
     return (
         <div>
-            <CharactersGrid>
-            {
-                    currentCharacter.map((character, id) =>(
-                        <CharacterCard key={id} character={character}  />
-                    ))
-                }
-            </CharactersGrid>
-                <PaginationComponent
-                    charactersPerPage={charactersPerPage}
-                    totalCharacters={characters.length}
-                    paginate={paginate}
-                />
+            <Row xs="12" sm="12" md="12" lg="12">
+                <Grid>
+                    {
+                        currentCharacter.map((character, id) =>(
+                            <CharacterCard key={id} character={character}  />
+                        ))
+                    }
+
+                </Grid>
+            </Row>
+            <Row xs="12" sm="12" md="12" lg="12">
+                    <PaginationComponent
+                        charactersPerPage={charactersPerPage}
+                        totalCharacters={characters.length}
+                        paginate={paginate}
+                    />
+
+            </Row>
+
+
 
 
 
@@ -56,13 +63,15 @@ const CharacterList = () =>{
     )
 
 }
-const CharactersGrid = styled.div`
+const Grid = styled.div`
   display: grid;
   padding: 5rem;
   grid-template-columns: repeat(2 , 2fr);
-  grid-row-gap: 5rem;
+  grid-row-gap: 2em;
   @media (max-width: 768px) {
-    grid-template-columns: none;
+   grid-template-columns: repeat(1 , 2fr);
   }
 `;
+
+
 export default CharacterList

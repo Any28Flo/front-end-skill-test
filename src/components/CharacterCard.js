@@ -12,22 +12,20 @@ import Overdrive from 'react-overdrive'
 const CharacterCard  = ({character}) => {
     const {id,name,status,type,gender, image} = character;
     if (!character) return null;
-    {
-        console.log(character)
-    }
+
     return(
         <div>
-            <Link to={`/${id}`}>
+            <Link to={`/character/${id}`}>
                 <Overdrive id={`${character.id}`}>
 
                     <div id="container">
-                        <div className="product-image">
+                        <div className="card-image">
                             <img
                                 src={image}
                                 alt={`/${id}`}/>
                         </div>
 
-                        <div className="product-details">
+                        <div className="card-details">
                             <h1>{name}</h1>
                             <p >{`Estatus : ${status}` } </p>
                             <p >{`Tipo : ${type ? type : 'desconocido'}` } </p>
