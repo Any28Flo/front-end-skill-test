@@ -4,6 +4,7 @@ import Overdrive from 'react-overdrive'
 
 import CharactersServices from "../services/charactersServices";
 import NavBar from "./NavBar/NavBar";
+import Spinner from "./Spinner";
 const CharacterDetails = (props) =>{
 
     const [characterDetails, setCharacterDetails] = useState([]);
@@ -18,7 +19,7 @@ const CharacterDetails = (props) =>{
     useEffect( () =>{
         getDetailCharacter()
     }, [])
-
+    if( characterDetails < 1 ) return <Spinner/>
     const {name, species, status, type, gender, image, id} = characterDetails
     return(
         <Container>
@@ -31,10 +32,11 @@ const CharacterDetails = (props) =>{
                 <p>{`Especie ${species}`}</p>
                     <p>{`Nombre: ${name}`}</p>
                     <p>{`Estatus: ${status}`}</p>
-                    <p>{`Tipo: ${type}`}</p>
+
+                    <p>{`Tipo : ${type ? type : 'desconocido'}` }</p>
                     <p>{`Género: ${gender}`}</p>
                 </Col>
-                <Col  md="6" lg="4">
+                <Col xs="12" md="6" lg="4">
                     <Overdrive id={id}>
                         <img
                             src={image}

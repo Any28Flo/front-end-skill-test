@@ -45,7 +45,6 @@ code {
   font-family: 'Farsan', cursive;
 }
 
-/* product image  */
 .card-image {
   transition: all 0.3s ease-out;
   display: inline-block;
