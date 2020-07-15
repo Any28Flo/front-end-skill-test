@@ -36,17 +36,18 @@ const CharacterList = () =>{
     return (
         <div>
             <CharactersGrid>
-                {
+            {
                     currentCharacter.map((character, id) =>(
                         <CharacterCard key={id} character={character}  />
                     ))
                 }
+            </CharactersGrid>
                 <PaginationComponent
                     charactersPerPage={charactersPerPage}
-                    totalCharacters={charactersPerPage.length}
+                    totalCharacters={characters.length}
                     paginate={paginate}
                 />
-            </CharactersGrid>
+
 
 
         </div>
