@@ -18,8 +18,7 @@
     "styled-components": "^5.1.1"
   },
   "engines": {
-    "node": "12.14.1",
-    "npm" : "6.13.4"
+    "node": "12.14.1"
   },
   "scripts": {
     "dev": "react-scripts start",
