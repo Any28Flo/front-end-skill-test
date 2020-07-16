@@ -1,12 +1,13 @@
 import React from "react"
+import {Link} from "react-router-dom";
 
 const NavBar = () =>{
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar back-blue" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://versions.bulma.io/0.7.0">
-                    <h2>LOGO</h2>
-                </a>
+                <Link to="/">
+                    <h2 className="color-white">LOGO</h2>
+                </Link>
             </div>
         </nav>
     )

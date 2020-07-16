@@ -23,10 +23,10 @@ const SearchBar = () =>{
     return(
         <Container>
             <Row>
-                <Col>
+                <Col sm={12} md={12} lg={10}>
                     <Input type="text" name="strToSearch"  onChange={handleChange} value={strSearch}/>
                 </Col>
-                <Col>
+                <Col sm={12} md={12} lg={2}>
                     <Button color="danger" onClick={handleClick}>Filtrar</Button>
                 </Col>
 

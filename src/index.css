@@ -12,7 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.back-blue{
+  background-color : #212D5E;
 
+}
+.color-white{
+  color: white;
+}
 #container{
   box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
   background: rgba(255, 255, 255, 0.90);
