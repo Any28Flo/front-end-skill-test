@@ -1,8 +1,13 @@
-import { createContext } from 'react';
+import React, {useState} from 'react'
 
-const AppContext = createContext({
-    characterList: null,
-    updateCharacterList: () => {}
-});
+const Context = React.createContext({})
 
-export default AppContext;
+export function AppContext ({children}) {
+    const [characterList, setCharacterList] = useState([])
+
+    return <Context.Provider value={{characterList, setCharacterList}}>
+        {children}
+    </Context.Provider>
+}
+
+export default Context

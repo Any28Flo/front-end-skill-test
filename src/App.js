@@ -3,24 +3,26 @@ import { Switch, Route, Link } from 'react-router-dom';
 import CharacterDetails from "./components/CharacterDetails";
 import NavBar from "./components/NavBar";
 import CharacterList from "./components/CharacterList";
-import AppContext from "./context";
+import {AppContext} from "./context";
+import SearchBar from "./components/SearchBar";
+
+
 
 const  App = () => {
 
-    const [charactersList , setCharactersList] = useState(null);
-
-  return (
-      <AppContext.Provider value={{characterList: charactersList, updateContext: setCharactersList}}>
+    return (
+      <AppContext>
           <div className="App">
               <Link to ="/">
                   <NavBar/>
               </Link>
+              <SearchBar/>
               <Switch>
                   <Route exact path="/" component ={CharacterList}/>
                   <Route path='/character/:id' component={CharacterDetails}  />
               </Switch>
           </div>
-      </AppContext.Provider>
+      </AppContext>
 
   );
 }
