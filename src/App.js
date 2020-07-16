@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import CharacterList from "./components/CharacterList";
 import {AppContext} from "./context";
 import SearchBar from "./components/SearchBar";
+import Filter from "./components/Filter";
 
 
 
@@ -20,6 +21,7 @@ const  App = () => {
               <Switch>
                   <Route exact path="/" component ={CharacterList}/>
                   <Route path='/character/:id' component={CharacterDetails}  />
+                  <Route path='/filter' component={Filter}/>
               </Switch>
           </div>
       </AppContext>
