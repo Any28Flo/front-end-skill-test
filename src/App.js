@@ -20,7 +20,7 @@ const  App = () => {
                   <Route path='/character/:id' component={CharacterDetails}  />
               </Switch>
           </div>
-      </AppContext>
+      </AppContext.Provider>
 
   );
 }
