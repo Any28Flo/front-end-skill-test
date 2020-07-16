@@ -1,13 +1,9 @@
 import React  from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
-//Functional component
-//{movie} objectc destructuring
-import 'bulma/css/bulma.css'
+
 import './../index.css'
-import styled from 'styled-components'
 import Overdrive from 'react-overdrive'
-//Route path for our images.
 
 const CharacterCard  = ({character}) => {
     const {id,name,status,type,gender, image} = character;
