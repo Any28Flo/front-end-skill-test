@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from "react"
-import {Row, Container} from 'reactstrap'
+import React, {useState, useContext} from "react"
+import {Row, Container, Col} from 'reactstrap'
 import styled from 'styled-components'
 import CharacterCard from "./CharacterCard";
 import PaginationComponent from "./PaginationComponent";
@@ -10,11 +10,10 @@ import AppContext from "../contexts/context";
 let numberCharactersPerPage = 5;
 
 const CharacterList = () =>{
-    const { characterList, setCharacterList  } = useContext(AppContext);
+    const { characterList } = useContext(AppContext);
     {
         characterList.length === 1 ?    numberCharactersPerPage = 1 :   numberCharactersPerPage = 5;
     }
-
 
     const [currentPage, setCurrentPage] = useState(1);
     const [charactersPerPage] = useState(numberCharactersPerPage);
@@ -23,10 +22,14 @@ const CharacterList = () =>{
     const currentCharacter = characterList.slice(indexOfFirstCharacter,  indexOfLastCharacter);
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
-
     if( characterList < 1 ) return <Spinner/>
     return (
         <Container>
+            <Row>
+                <Col>
+                    <h1>Personajes</h1>
+                </Col>
+            </Row>
             <Row xs="12" sm="12" md="12" lg="12">
                 <Grid>
                     {

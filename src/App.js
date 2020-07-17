@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import CharacterDetails from "./components/CharacterDetails";
 import NavBar from "./components/NavBar";
