@@ -17,6 +17,10 @@ class CharactersServices{
             .then(res => res)
             .catch(e => console.log(e))
     }
+    customGet = (urlObject) =>{
+        return this.service.get(`/character/?${urlObject}`)
+    }
+
 
 }
 export default CharactersServices

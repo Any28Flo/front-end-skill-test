@@ -32,7 +32,7 @@ const CharacterList = () =>{
         })
     }
     useEffect( () =>{
-        getCharacters()
+        //getCharacters()
 
     }, [])
 
