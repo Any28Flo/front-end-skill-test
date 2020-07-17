@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useContext} from "react"
 import {Row, Container} from 'reactstrap'
 import styled from 'styled-components'
-import CharacterService from "./../services/charactersServices"
 import CharacterCard from "./CharacterCard";
 import PaginationComponent from "./PaginationComponent";
 import Spinner from "./Spinner";
-import AppContext from "./../context";
+import AppContext from "../contexts/context";
 
 //Display the number of movie displayed per page
 let numberCharactersPerPage = 5;
@@ -22,19 +21,8 @@ const CharacterList = () =>{
     const indexOfLastCharacter = currentPage * charactersPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
     const currentCharacter = characterList.slice(indexOfFirstCharacter,  indexOfLastCharacter);
-    const characterServices = new CharacterService();
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
-    const getCharacters = () =>{
-        characterServices.getCharacters()
-        .then(responseFromApi =>{
-            setCharacterList(responseFromApi.data.results)
-        })
-    }
-    useEffect( () =>{
-        //getCharacters()
-
-    }, [])
 
     if( characterList < 1 ) return <Spinner/>
     return (

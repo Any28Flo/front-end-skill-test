@@ -1,17 +1,19 @@
 import React, {useState, useContext} from "react"
 import {Link} from "react-router-dom";
 import {Input,Row, Col, Container, Button} from "reactstrap";
-import AppContext from "./../context";
+import AppContext from "../contexts/context";
 const SearchBar = () =>{
     const { characterList, setCharacterList  } = useContext(AppContext);
 
     const [strSearch, setStrSearch] = useState('')
+    const copyCharacterList = characterList.slice;
 
     const handleChange = e =>{
         setStrSearch(e.target.value)
         let strToSearch = capitalize_Words(strSearch)
-        const newArray = characterList.filter(element => element.name.includes(strToSearch) )
+        const newArray = copyCharacterList.filter(element => element.name.includes(strToSearch) )
         setCharacterList(newArray)
+
     }
     function capitalize_Words(str)
     {

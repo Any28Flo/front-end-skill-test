@@ -1,22 +1,32 @@
 import React, {useContext, useEffect, useState} from "react";
+import { useHistory } from 'react-router-dom';
+
 import {Col, Container, Row, Button} from "reactstrap"
 import useDropdown from "../hooks/useDropdown";
-import AppContext from "./../context";
+import AppContext from "../contexts/context";
+import  RequestContext from "../contexts/reqContext"
+import CharactersServices from "../services/charactersServices";
+
 const querystring = require("querystring");
 
 const Filter = () =>{
-    const { characterList, setCharacterList  } = useContext(AppContext);
+
+    const { characterList,setCharacterList  } = useContext(AppContext);
+    const { urlObject,setUrlObject} = useContext(RequestContext)
+
     const [species , setSpecies] = useState([]);
-    const [specie, SpecieDropdown, setSpecie] = useDropdown( "", species, "Especie");
+    const characterServices = new CharactersServices();
+    const [specie, SpecieDropdown, setSpecie] = useDropdown( "", species, "Especie", "species");
 
     const [listStatus , setListStatus] = useState([]);
-    const [status, StatusDropdown, setStatus] = useDropdown("", listStatus, "Estatus");
+    const [status, StatusDropdown, setStatus] = useDropdown("", listStatus, "Estatus" , "status");
 
     const [types , setTypes] = useState([]);
-    const [type, TypeDropdown, setType] = useDropdown("", types, "Tipo");
+    const [type, TypeDropdown, setType] = useDropdown("", types, "Tipo", "type");
 
     const [listGenre , setListGenre] = useState([]);
-    const [genre, GenreDropdown, setGenre] = useDropdown("", listGenre, "Genéro");
+    const [genre, GenreDropdown, setGenre] = useDropdown("", listGenre, "Genéro", "gender");
+    const history = useHistory();
 
     const createArray = (filter) => {
         let newArray = []
@@ -45,23 +55,22 @@ const Filter = () =>{
     }, [])
 
     const handleClick = e =>{
-        let urlObject ={
-            species : specie,
-            status : status,
-            type : type,
-            gender : genre
-        }
-        console.log(urlObject)
-        // Use the stringify() method on the object
         let parsedQuery = querystring.stringify(urlObject);
+        characterServices.customGet(parsedQuery)
+            .then( data =>{
+                setCharacterList(data.results)
+                history.push("/");
+            })
+            .catch( error => console.log(error))
 
-        console.log("Parsed Query:", parsedQuery);
+             setUrlObject({})
+
     }
     return(
         <Container>
             <Row>
                 <Col>
-                    <SpecieDropdown/>
+                    <SpecieDropdown />
                 </Col>
             </Row>
             <Row>

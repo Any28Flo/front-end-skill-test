@@ -19,6 +19,8 @@ class CharactersServices{
     }
     customGet = (urlObject) =>{
         return this.service.get(`/character/?${urlObject}`)
+            .then(res => res.data)
+            .catch(e =>console.log(e))
     }
 
 

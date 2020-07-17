@@ -1,15 +1,23 @@
-import  React, {useState} from "react"
+import React, {useContext, useState} from "react"
+import  RequestContext from "../contexts/reqContext"
 
-const useDropdown = ( defaultState, options,description) =>{
+const useDropdown = ( defaultState, options,description,value) =>{
+
         const [state , setState] = useState(defaultState);
+        const { urlObject,setUrlObject} = useContext(RequestContext)
+
         const id= `dropdown-${description.replace(" " ,"").toLocaleLowerCase()}`;
+        const handleChange = e =>{
+                setState( e.target.value)
+                setUrlObject({ ...urlObject, [e.target.name]: (e.target.value).toLowerCase() })
+        }
         const Dropdown = () =>(
 
                 <select
                     id={id}
-                    name={description}
+                    name={value}
                     value={state}
-                    onChange={ e => setState( e.target.value)}
+                    onChange={ handleChange}
                     onBlur={ e => setState(e.target.value)}
                     disabled={options.length === 0}
                 >

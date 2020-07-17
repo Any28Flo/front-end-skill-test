@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import CharacterService from "./services/charactersServices"
+import CharacterService from "../services/charactersServices"
 
 const Context = React.createContext({})
 

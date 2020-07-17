@@ -3,7 +3,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import CharacterDetails from "./components/CharacterDetails";
 import NavBar from "./components/NavBar";
 import CharacterList from "./components/CharacterList";
-import {AppContext} from "./context";
+import {AppContext} from "./contexts/context";
+import {RequestContext} from "./contexts/reqContext";
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
 
@@ -21,7 +22,9 @@ const  App = () => {
               <Switch>
                   <Route exact path="/" component ={CharacterList}/>
                   <Route path='/character/:id' component={CharacterDetails}  />
-                  <Route path='/filter' component={Filter}/>
+                  <RequestContext>
+                    <Route path='/filter' component={Filter}/>
+                  </RequestContext>
               </Switch>
           </div>
       </AppContext>
